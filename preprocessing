@@ -1,6 +1,0 @@
-import numpy as np
-import nltk
-from nltk.tokenize import word_tokenize
-
-def data_preprocess(data, test_split):
-  

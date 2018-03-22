@@ -16,6 +16,7 @@ path = "C:/Users\SB00745777\OneDrive - Ulster University\KaraOne\Data/"
 for f in folders:
     new_path = path + f
     data = load_pickle(new_path,"window_data.p")
+    labels = load_data(new_path,"labels","labels")
     feature_vector = []
     for tr in data:
         
@@ -56,8 +57,11 @@ for f in folders:
                 trial = np.append(trial,data)
        
         feature_vector.append(trial)
-        
-    pickle.dump(feature_vector, open("td_features.p", "wb"))        
+    
+    df = {'Features':feature_vector,'Targets':labels}
+    df = pd.DataFrame(df)
+    pickle.dump(df, open("td_df.p", "wb")) #features and targets together in DataFrame
+    pickle.dump(feature_vector, open("td_features.p", "wb")) #features only        
                     
         			
         			
